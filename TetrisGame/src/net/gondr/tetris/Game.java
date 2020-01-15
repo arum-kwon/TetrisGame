@@ -22,6 +22,7 @@ public class Game {
 	private double blockDownTime = 0;
 	
 	private int score = 0;
+	private boolean gameOver = false;
 	
 	public Game(Canvas canvas) {
 		//캔버스의 너비와 높이를 가져온다.
@@ -62,6 +63,9 @@ public class Game {
 		//매 프레임마다 실행되는 update매서드 블럭의 자동하강 로직을 담당.
 		blockDownTime += delta; //0.5초마다 블럭을 아래로 내린다. 이 수치는 난이도 조절기능에서 조절 가능.
 		if(blockDownTime >= 0.5) {
+			if(gameOver) {
+				return;
+			}
 			player.down();
 			blockDownTime = 0;
 		}
@@ -114,6 +118,13 @@ public class Game {
 	}
 	
 	public void keyHandler(KeyEvent e) {
+		if(gameOver) {
+			return;
+		}
 		player.keyHandler(e); //키보드 핸들링을 담당하는 매서드
+	}
+	
+	public void setGameOver() {
+		gameOver = true;
 	}
 }

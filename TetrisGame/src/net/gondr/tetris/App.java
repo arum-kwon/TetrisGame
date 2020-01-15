@@ -3,9 +3,12 @@ package net.gondr.tetris;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import sun.applet.Main;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Font;
 
 
 public class App extends Application {
@@ -23,6 +26,11 @@ public class App extends Application {
 			
 			Scene scene = new Scene(anchorPane);
 			
+			Label titleLabel = new Label();
+			titleLabel.setText("GAME OVER");
+			titleLabel.setFont(new Font(25));
+			//anchorPane.set
+			
 			scene.addEventFilter(KeyEvent.KEY_PRESSED, e -> {
 				if(game != null)
 					game.keyHandler(e); //게임의 이벤트 핸들러로 넘겨준다.
@@ -32,5 +40,8 @@ public class App extends Application {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	public static void main(String[] args) {
+		launch(args);
 	}
 }

@@ -163,6 +163,9 @@ public class Player {
 		x = 5;
 		y = 2;
 		rotate = 0;
+		if(!checkPossible()) {
+			App.app.game.setGameOver();
+		}
 	}
 	
 	private boolean checkPossible() {
@@ -171,10 +174,9 @@ public class Player {
 			int bx = (int)shape[current][rotate][i].getX() + x;
 			int by = (int)shape[current][rotate][i].getY() + y;
 			
-			if(board[by][bx].getFill()) return false; //이미 그곳에 블럭이 존재하면
-			
 			if (bx < 0 || by < 0 || bx >= 10 || by >= 20 ) return false; //범위 밖
 			
+			if(board[by][bx].getFill()) return false; //이미 그곳에 블럭이 존재하면
 		}
 		return true;		
 	}
