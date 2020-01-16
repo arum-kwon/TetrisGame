@@ -115,6 +115,7 @@ public class Game {
 				board[i][j].render(gc);
 			}
 		}
+		App.app.showGameOverview();
 	}
 	
 	public void keyHandler(KeyEvent e) {
